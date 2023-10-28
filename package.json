@@ -2,8 +2,10 @@
   "name": "wp-helper",
   "version": "0.0.1",
   "description": "",
-  "main": "index.js",
+  "main": "dist/index.js",
   "scripts": {
+    "build": "npx tsc",
+    "prod": "npm run build && npm install -g .",
     "test": "test"
   },
   "repository": {
@@ -15,9 +17,16 @@
   "bugs": {
     "url": "https://github.com/dasnonap/wp-helper/issues"
   },
+  "bin": {
+    "wp-helper": "./dist/index.js"
+  },
   "homepage": "https://github.com/dasnonap/wp-helper#readme",
   "dependencies": {
     "commander": "^11.1.0",
     "conf": "^12.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.8.9",
+    "typescript": "^5.2.2"
   }
 }
