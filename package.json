@@ -15,5 +15,9 @@
   "bugs": {
     "url": "https://github.com/dasnonap/wp-helper/issues"
   },
-  "homepage": "https://github.com/dasnonap/wp-helper#readme"
+  "homepage": "https://github.com/dasnonap/wp-helper#readme",
+  "dependencies": {
+    "commander": "^11.1.0",
+    "conf": "^12.0.0"
+  }
 }
