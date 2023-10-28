@@ -6,6 +6,7 @@
   "scripts": {
     "build": "npx tsc",
     "prod": "npm run build && npm install -g .",
+    "dev": "npm run build && node dist/index.js",
     "test": "test"
   },
   "repository": {
