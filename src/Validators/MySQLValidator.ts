@@ -1,4 +1,4 @@
-import { exec } from "node:child_process";
+import { ChildProcess, spawnSync } from "node:child_process";
 
 class MySQLValidator implements Validator {
   isValid: boolean;
@@ -7,19 +7,14 @@ class MySQLValidator implements Validator {
     this.isValid = true;
   }
 
-  async validate(): Promise<void> {
-    try {
-      const childProcess = await exec(
-        "mysql --versionss",
-        (error, output, stderr) => {
-          if (error != null && stderr.length) {
-            throw new Error("MySQL server is not installed!");
-          }
-          this.isValid = false;
-        }
-      );
-    } catch (error) {
-      console.log(error);
+  validate(): void {
+    const result = spawnSync("mysql", ["--versions"]);
+    const stdout = result.stdout.toString();
+    const error = result.stderr.toString();
+
+    if (error) {
+      this.isValid = false;
+      throw new Error("Throw generic error");
     }
   }
 

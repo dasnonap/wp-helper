@@ -26,7 +26,20 @@ import MySQLValidator from "./Validators/MySQLValidator";
 
 // program.parse();
 const validator = new MySQLValidator();
+try {
+  const test = validator.validate();
+} catch (error) {
+  console.log("finaly working please", error, validator.getIsValid());
+}
+// const test = validator.validate().catch((err) => {
+//   console.log("az sym ");
+// });
+// try {
 
-validator.validate().then(() => {
-  console.log("MySQL is installed" + validator.getIsValid());
-});
+//   console.log(test, typeof test);
+// } catch (error) {
+//   console.log(typeof error);
+// }
+// validator.validate().then(() => {
+//   console.log("MySQL is installed" + validator.getIsValid());
+// });
