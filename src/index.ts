@@ -1,6 +1,7 @@
 #! /usr/bin/env node
 import { Command } from "commander";
 import MySQLValidator from "./Validators/MySQLValidator";
+import WPCliValidator from "./Validators/WPCliValidator";
 
 // const program = new Command();
 
@@ -25,21 +26,12 @@ import MySQLValidator from "./Validators/MySQLValidator";
 //   .action((str, options) => {});
 
 // program.parse();
-const validator = new MySQLValidator();
+// const validator = new MySQLValidator();
+const validator = new WPCliValidator();
 try {
   const test = validator.validate();
+
+  console.log(validator.getIsValid());
 } catch (error) {
   console.log("finaly working please", error, validator.getIsValid());
 }
-// const test = validator.validate().catch((err) => {
-//   console.log("az sym ");
-// });
-// try {
-
-//   console.log(test, typeof test);
-// } catch (error) {
-//   console.log(typeof error);
-// }
-// validator.validate().then(() => {
-//   console.log("MySQL is installed" + validator.getIsValid());
-// });

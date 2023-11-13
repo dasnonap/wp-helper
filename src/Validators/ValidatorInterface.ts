@@ -1,5 +1,5 @@
-interface Validator {
-  // Store valid valid
+interface IValidator {
+  // Store valid state
   isValid: boolean;
 
   // Throws exception if issues
@@ -7,4 +7,9 @@ interface Validator {
 
   // Get isValid
   getIsValid(): boolean;
+
+  // Set isValid
+  setIsValid(state: boolean): any;
 }
+
+export default IValidator;

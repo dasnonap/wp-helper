@@ -1,6 +1,8 @@
-import { ChildProcess, spawnSync } from "node:child_process";
+import MySqlNotInstalled from "../Exceptions/MySqlNotInstalled";
+import ProcessHandler from "../Process/ProcessHandler";
+import IValidator from "./ValidatorInterface";
 
-class MySQLValidator implements Validator {
+class MySQLValidator implements IValidator {
   isValid: boolean;
 
   constructor() {
@@ -8,18 +10,20 @@ class MySQLValidator implements Validator {
   }
 
   validate(): void {
-    const result = spawnSync("mysql", ["--versions"]);
-    const stdout = result.stdout.toString();
-    const error = result.stderr.toString();
+    let result = ProcessHandler.createSync("mysql", ["--version"]);
 
-    if (error) {
-      this.isValid = false;
-      throw new Error("Throw generic error");
+    if (result.error) {
+      this.setIsValid(false);
+      throw new MySqlNotInstalled();
     }
   }
 
   getIsValid(): boolean {
     return this.isValid;
+  }
+
+  setIsValid(isValid: boolean): void {
+    this.isValid = isValid;
   }
 }
 
