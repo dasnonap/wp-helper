@@ -1,6 +1,7 @@
 #! /usr/bin/env node
 import { Command } from "commander";
 import MySQLValidator from "./Validators/MySQLValidator";
+import PHPValidator from "./Validators/PHPValidator";
 import WPCliValidator from "./Validators/WPCliValidator";
 
 // const program = new Command();
@@ -27,7 +28,7 @@ import WPCliValidator from "./Validators/WPCliValidator";
 
 // program.parse();
 // const validator = new MySQLValidator();
-const validator = new WPCliValidator();
+const validator = new PHPValidator();
 try {
   const test = validator.validate();
 

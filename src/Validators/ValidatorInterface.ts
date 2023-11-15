@@ -1,15 +1,21 @@
-interface IValidator {
+abstract class IValidator {
   // Store valid state
-  isValid: boolean;
+  isValid: boolean = true;
+
+  constructor() {}
 
   // Throws exception if issues
-  validate(): void;
+  validate(): void {}
 
   // Get isValid
-  getIsValid(): boolean;
+  getIsValid(): boolean {
+    return this.isValid;
+  }
 
   // Set isValid
-  setIsValid(state: boolean): any;
+  setIsValid(state: boolean): any {
+    this.isValid = state;
+  }
 }
 
 export default IValidator;
