@@ -1,3 +1,4 @@
+import ProcessHandler from "../Process/ProcessHandler";
 import ACommand from "./ACommand";
 
 class InitCommand extends ACommand {
@@ -15,7 +16,8 @@ class InitCommand extends ACommand {
    * Handle Init Command Action
    */
   public action() {
-    console.log("test action yey");
+    // CWD, wp , copy, modify
+    ProcessHandler.createSync('wp core download');
   }
 }
 
